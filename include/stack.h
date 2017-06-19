@@ -22,6 +22,8 @@ namespace cpp_seed {
         }
     };
 
+//    implementation in .h due to template class instances and linking hassles
+    
     template <typename T>
     void Stack<T>::push(T const& elem) {
         _elems.push_back(elem);
