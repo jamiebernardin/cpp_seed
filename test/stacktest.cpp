@@ -17,46 +17,46 @@ protected:
         fill();
     }
     void fill() {
-        intStack_.push(1);
-        intStack_.push(2);
-        strStack_.push("foo");
-        strStack_.push("bar");
+        _intStack.push(1);
+        _intStack.push(2);
+        _strStack.push("foo");
+        _strStack.push("bar");
     }
     void empty() {
-        while (!intStack_.empty()) intStack_.pop();
-        while (!strStack_.empty()) strStack_.pop();
+        while (!_intStack.empty()) _intStack.pop();
+        while (!_strStack.empty()) _strStack.pop();
     }
-    Stack<int> intStack_;
-    Stack<std::string> strStack_;
+    Stack<int> _intStack;
+    Stack<std::string> _strStack;
 
 };
 
 TEST_F(StackTest, topTest) {
     init();
-    EXPECT_EQ(2, intStack_.top());
-    EXPECT_EQ("bar", strStack_.top());
+    EXPECT_EQ(2, _intStack.top());
+    EXPECT_EQ("bar", _strStack.top());
 }
 
 TEST_F(StackTest, popTest) {
     init();
-    intStack_.pop();
-    strStack_.pop();
-    EXPECT_EQ(1, intStack_.top());
-    EXPECT_EQ("foo", strStack_.top());
-    intStack_.push(2);
-    strStack_.push("bar");
+    _intStack.pop();
+    _strStack.pop();
+    EXPECT_EQ(1, _intStack.top());
+    EXPECT_EQ("foo", _strStack.top());
+    _intStack.push(2);
+    _strStack.push("bar");
 }
 
 TEST_F(StackTest, emptyTest) {
     empty();
-    EXPECT_TRUE(intStack_.empty());
-    EXPECT_TRUE(strStack_.empty());
+    EXPECT_TRUE(_intStack.empty());
+    EXPECT_TRUE(_strStack.empty());
 }
 
 TEST_F(StackTest, pushTest) {
     init();
-    intStack_.push(3);
-    strStack_.push("baz");
-    EXPECT_EQ(intStack_.top(), 3);
-    EXPECT_EQ(strStack_.top(), "baz");
+    _intStack.push(3);
+    _strStack.push("baz");
+    EXPECT_EQ(_intStack.top(), 3);
+    EXPECT_EQ(_strStack.top(), "baz");
 }
